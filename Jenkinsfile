@@ -1,9 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('trigger-airflow-dag') {
             steps {
-                sh 'gsutil cp -r . gs://shopin-continuous-integration-data'
+                sh 'gsutil -q stat gs://panw-dataproc-demo/wordcount.py || gsutil cp wordcount.py  gs://panw-dataproc-demo/'
+                sh 'gsutil rm gs://panw-dataproc-demo/wordcount.py'
+                sh 'gsutil cp wordcount.py gs://[anw-dataproc-demo/'
             }
         }
     }
