@@ -1,8 +1,10 @@
+def GOOGLE_APPLICATION_CREDENTIALS = "/etc/key.json"
 pipeline {
     agent any
     stages {
         stage('trigger-airflow-dag') {
             steps {
+                sh 'gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}'
                 sh 'gsutil -q stat gs://panw-dataproc-demo/wordcount.py || gsutil cp wordcount.py  gs://panw-dataproc-demo/'
                 sh 'gsutil rm gs://panw-dataproc-demo/wordcount.py'
                 sh 'gsutil cp wordcount.py gs://panw-dataproc-demo/'
