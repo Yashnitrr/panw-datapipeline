@@ -27,7 +27,7 @@ conf = {
 }
 
 # Output Parameters.
-output_dataset = 'wordcount_dataset'
+output_dataset = 'panw_dataset'
 output_table = 'wordcount_output'
 
 # Load data in from BigQuery.
@@ -67,10 +67,9 @@ subprocess.check_call(
 
 # Manually clean up the staging_directories, otherwise BigQuery
 # files will remain indefinitely.
-'''
+
 input_path = sc._jvm.org.apache.hadoop.fs.Path(input_directory)
 input_path.getFileSystem(sc._jsc.hadoopConfiguration()).delete(input_path, True)
 output_path = sc._jvm.org.apache.hadoop.fs.Path(output_directory)
 output_path.getFileSystem(sc._jsc.hadoopConfiguration()).delete(
     output_path, True)
-'''
