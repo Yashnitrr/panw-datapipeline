@@ -1,4 +1,3 @@
-def GOOGLE_APPLICATION_CREDENTIALS = "/home/yash_agrawal/key.json"
 pipeline {
     agent any
     stages {
