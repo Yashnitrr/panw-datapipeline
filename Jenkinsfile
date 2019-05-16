@@ -1,4 +1,4 @@
-def GOOGLE_APPLICATION_CREDENTIALS = "/etc/key.json"
+def GOOGLE_APPLICATION_CREDENTIALS = "/home/key.json"
 pipeline {
     agent any
     stages {
