@@ -67,7 +67,7 @@ t2 = dataproc_operator.DataProcPySparkOperator(
         dag=dag,
   
     )
-'''
+
 t3 = dataproc_operator.DataprocClusterDeleteOperator(
         task_id='delete_dataproc_cluster',
         project_id='gcptraining-17042017',
@@ -78,8 +78,8 @@ t3 = dataproc_operator.DataprocClusterDeleteOperator(
         dag=dag,
 
     )
-'''
-t1 >> t2
+
+t1 >> t2 >> t3
 
 #--replace tag if you want to replace the schema in table
 #bq --location=[LOCATION] load --[no]replace [DATASET].[TABLE] [PATH_TO_SOURCE] [SCHEMA]
