@@ -9,12 +9,19 @@ from airflow.utils import trigger_rule
 import datetime
 #import os
 
+# We set the start_date of the DAG to the previous date. This will
+# make the DAG immediately available for scheduling.
+YESTERDAY = datetime.datetime.combine(
+    datetime.datetime.today() - datetime.timedelta(1),
+    datetime.datetime.min.time())
+
 PYSPARK_JOB = 'gs://panw-dataproc-demo/wordcount.py'
 
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': airflow.utils.dates.days_ago(2),
+    'start_date': YESTERDAY,
+    #'start_date': airflow.utils.dates.days_ago(2),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,
