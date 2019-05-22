@@ -41,7 +41,7 @@ default_args = {
 }
 
 dag = DAG(
-    'airflow_demo2',
+    'airflow_demo3',
     default_args=default_args,
     description='Orchestration DAG',
     schedule_interval=None, 
