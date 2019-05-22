@@ -44,7 +44,7 @@ dag = DAG(
     'airflow_demo2',
     default_args=default_args,
     description='Orchestration DAG',
-    schedule_interval=NONE, 
+    schedule_interval=None, 
 )
 
 # t1, t2 and t3 are examples of tasks created by instantiating operators\
