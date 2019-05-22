@@ -34,20 +34,13 @@ default_args = {
 }
 
 dag = DAG(
-    'airflow_panw_demo',
+    'airflow_demo',
     default_args=default_args,
     description='Orchestration DAG',
     schedule_interval=timedelta(days=1), 
 )
 
 # t1, t2 and t3 are examples of tasks created by instantiating operators\
-'''
-t1 = BashOperator(
-    task_id='creating dataproc cluster',
-    bash_command='gcloud beta dataproc clusters create panw-auto-create --optional-components=ANACONDA,JUPYTER --region=us-central1 --image-version=1.3 --enable-component-gateway --bucket panw-dataproc-demo --project gcptraining-17042017 --initialization-actions "gs://dataproc-initialization-actions/connectors/connectors.sh" --metadata "gcs-connector-version=1.9.11" --metadata "bigquery-connector-version=0.13.11"',
-    dag=dag,
-)
-'''
 
 t1 = dataproc_operator.DataprocClusterCreateOperator(
         task_id='create_dataproc_cluster',
