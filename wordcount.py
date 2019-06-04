@@ -27,8 +27,8 @@ conf = {
 }
 
 # Output Parameters.
-output_dataset = 'panw_dataset'
-output_table = 'wordcount4_output'
+output_dataset = 'wordcount_dataset'
+output_table = 'wordcount_output'
 
 # Load data in from BigQuery.
 table_data = sc.newAPIHadoopRDD(
